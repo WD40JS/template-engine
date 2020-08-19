@@ -10,7 +10,81 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const teamMembers = [];
+const idArray = [];
 
+function appMenu() {
+    function createManager(){
+        console.log("Please enter your manager");
+        inquirer.prompt([ 
+            {
+                type: "input",
+                name: "managerName",
+                message: "What is your manager's name?"                                
+            },{
+                type: "input",
+                name: "managerId",
+                message: "What is your manager's id?"
+            },{
+                type: "input",
+                name: "managerEmail",
+                message: "What is your manager's email?"
+            },{
+                type: "input",
+                name: "managerOfficeNumber",
+                message: "What is your manager's office number?"
+            }
+        ]).then(answers => {
+            const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber)
+            teamMembers.push(manager);
+            idArray.push(answers.managerId);
+            createTeam();
+        })
+    }
+
+    function createTeam() {
+        inquirer.prompt([
+            {
+              type: "list",
+              name: "memberChoice",
+              message: "Which type of team member would you like to add?",
+              choices: [
+                "Engineer",
+                "Intern",
+                "I don't want to add any more team members"
+              ]
+            }
+            ]).then(userChoice => {
+            switch(userChoice.memberChoice) {
+            case "Engineer":
+              addEngineer();
+              break;
+            case "Intern":
+              addIntern();
+              break;
+            default:
+              buildTeam();
+            }
+        });
+    }
+
+    function addEngineer() {
+
+    }
+    
+    function addIntern() {
+
+    }
+
+    function buildTeam() {
+
+    }
+
+    createManager();
+
+}
+
+appMenu();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
