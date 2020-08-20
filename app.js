@@ -69,11 +69,50 @@ function appMenu() {
     }
 
     function addEngineer() {
+      inquirer.prompt([
+      {  
+          type: "input",
+          name: "engineerName",
+          message: "What is your engineer's name?"                                
+      },{
+        type: "input",
+          name: "engineerId",
+          message: "What is your engineer's ID?"                                
+      },{
+        type: "input",
+          name: "engineerEmail",
+          message: "What is your engineer's Email?"                                
+      },{
+        type: "input",
+          name: "engineerGithub",
+          message: "What is your engineer's Github?"                                
+      },{
+      }
+    ]);
 
     }
     
     function addIntern() {
-
+      inquirer.prompt([
+        {  
+            type: "input",
+            name: "internName",
+            message: "What is your intern's name?"                                
+        },{
+          type: "input",
+            name: "internId",
+            message: "What is your intern's ID?"                                
+        },{
+          type: "input",
+            name: "internEmail",
+            message: "What is your intern's Email?"                                
+        },{
+          type: "input",
+            name: "internSchool",
+            message: "What is your intern's School?"                                
+        },{
+        }
+      ]);
     }
 
     function buildTeam() {
